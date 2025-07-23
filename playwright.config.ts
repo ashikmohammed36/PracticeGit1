@@ -24,6 +24,7 @@ if (process.env.ENV_NAME) {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -34,7 +35,7 @@ export default defineConfig({
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
   /*    */
-  expect:{ timeout:30000},
+  expect: { timeout: 30000 },
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: [
     ['html', { open: 'always' }], // 'html',
@@ -48,7 +49,8 @@ export default defineConfig({
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
     video: 'retain-on-failure',
-    headless: false,// Show browser window (set true for CI)
+    // headless: false,// Show browser window (set true for CI)
+    headless: process.env.CI ? true : false,  // ✅ force headless on CI
     viewport: null,  // disables default viewport and uses real screen size
   },
 
