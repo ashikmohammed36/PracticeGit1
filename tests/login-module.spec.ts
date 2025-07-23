@@ -20,6 +20,7 @@ test.describe("Invalid login scenarios", () => {
         await loginPage.loginOrangeHrm(username, loginTestData.invalid_password);
         await expect(loginPage.invalidCredentialsError).toHaveText(loginTestData.invalid_credentails_text);
         await expect(loginPage.userNameInput).toBeVisible();
+        console.log("Invalid Credentials Error Message Verified");
     });
     test('Login with invalid username', {
         tag: ['@UI'],
