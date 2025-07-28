@@ -70,7 +70,7 @@ export default defineConfig({
   },
   {
     name: 'chromium',
-    dependencies: ['Setup'],
+   // dependencies: ['Setup'],
     use: {
       ...devices['Desktop Chrome'],
       storageState: './playwright/.auth/auth.json'
