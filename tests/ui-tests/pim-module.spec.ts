@@ -1,6 +1,6 @@
-import { test } from '../fixtures/hooks-fixture';
+import { test } from '../../fixtures/hooks-fixture';
 import { expect } from '@playwright/test';
-import pimTestData from '../data/pim-module-data.json';
+import pimTestData from '../../data/ui-data/pim-module-data.json';
 
 test('Add Employee under PIM Module',{
     tag:['@UI' ,'@UAT']

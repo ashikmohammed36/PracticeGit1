@@ -1,5 +1,5 @@
-import { test } from '../fixtures/hooks-fixture';
-import loginTestData from '../data/login-module-data.json';
+import { test } from '../../fixtures/hooks-fixture';
+import loginTestData from '../../data/ui-data/login-module-data.json';
 import { expect } from '@playwright/test';
 
 test.use({
