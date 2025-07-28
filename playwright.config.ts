@@ -63,19 +63,19 @@ export default defineConfig({
 
   /* Configure projects for major browsers */
   projects: [
-    //{
-    //  name: 'Setup',
-    //  testMatch: 'global.setup.ts'
-    // },
-    {
-      name: 'chromium',
-      dependencies: ['Setup'],
-      use: {
-        ...devices['Desktop Chrome'],
-        storageState: './playwright/.auth/auth.json'
-      },
-
+  {
+    name: 'Setup',
+    testDir: './tests/ui-tests',
+    testMatch: 'global.setup.ts',
+  },
+  {
+    name: 'chromium',
+    dependencies: ['Setup'],
+    use: {
+      ...devices['Desktop Chrome'],
+      storageState: './playwright/.auth/auth.json'
     },
+  },
     {
       name: 'apiTest',
       testDir: './tests/api-tests'
