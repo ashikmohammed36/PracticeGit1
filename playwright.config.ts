@@ -24,9 +24,8 @@ if (process.env.ENV_NAME) {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  
-  globalSetup: './tests/global.setup.ts',
 
+  globalSetup: './tests/ui-tests/global.setup.ts',
   testDir: './tests',
   /* Run tests in files in parallel */
   fullyParallel: false,
@@ -67,7 +66,7 @@ export default defineConfig({
     //{
     //  name: 'Setup',
     //  testMatch: 'global.setup.ts'
-   // },
+    // },
     {
       name: 'chromium',
       dependencies: ['Setup'],
