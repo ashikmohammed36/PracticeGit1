@@ -24,6 +24,8 @@ if (process.env.ENV_NAME) {
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
+  
+  globalSetup: './tests/global.setup.ts',
 
   testDir: './tests',
   /* Run tests in files in parallel */
@@ -52,14 +54,20 @@ export default defineConfig({
     // headless: false,// Show browser window (set true for CI)
     headless: process.env.CI ? true : false,  // ✅ force headless on CI
     viewport: null,  // disables default viewport and uses real screen size
+    baseURL: process.env.API_BASE_URL,
+    extraHTTPHeaders: {
+      Accept: 'application/json',
+      'Content-type': 'application/json'
+    },
+
   },
 
   /* Configure projects for major browsers */
   projects: [
-    {
-      name: 'Setup',
-      testMatch: 'global.setup.ts'
-    },
+    //{
+    //  name: 'Setup',
+    //  testMatch: 'global.setup.ts'
+   // },
     {
       name: 'chromium',
       dependencies: ['Setup'],
@@ -67,6 +75,11 @@ export default defineConfig({
         ...devices['Desktop Chrome'],
         storageState: './playwright/.auth/auth.json'
       },
+
+    },
+    {
+      name: 'apiTest',
+      testDir: './tests/api-tests'
 
     },
     /*{
@@ -91,10 +104,10 @@ export default defineConfig({
     // },
 
     /* Test against branded browsers. */
-    //{
-    //  name: 'Microsoft Edge',
-    //  use: { ...devices['Desktop Edge'], channel: 'msedge' },
-    //},
+    {
+      name: 'Microsoft Edge',
+      use: { ...devices['Desktop Edge'], channel: 'msedge' },
+    },
     // {
     //   name: 'Google Chrome',
     //   use: { ...devices['Desktop Chrome'], channel: 'chrome' },
